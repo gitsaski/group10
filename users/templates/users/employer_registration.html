@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,44 @@
     <h1>Employer Registration Form</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div>
+            <label for="{{ form.full_name.id_for_label }}">Full Name:</label>
+            {{ form.full_name }}
+        </div>
+        <div>
+            <label for="{{ form.company_name.id_for_label }}">Company Name:</label>
+            {{ form.company_name }}
+        </div>
+        <div>
+            <label for="{{ form.email.id_for_label }}">Email Address:</label>
+            {{ form.email }}
+        </div>
+        <div>
+            <label for="{{ form.contact_number.id_for_label }}">Contact Number:</label>
+            {{ form.contact_number }}
+        </div>
+        <div>
+            <label for="{{ form.company_location.id_for_label }}">Company Location/Address:</label>
+            {{ form.company_location }}
+        </div>
+        <div>
+            <label for="{{ form.industry.id_for_label }}">Industry/Sector:</label>
+            {{ form.industry }}
+        </div>
+        <div>
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+        <div>
+            <label for="{{ form.password.id_for_label }}">Password:</label>
+            {{ form.password }}
+        </div>
+        <div>
+            <label for="{{ form.company_description.id_for_label }}">Company Description or Summary:</label>
+        </div>
+        <div>
+            {{ form.company_description }}
+        </div>
         <button type="submit">Submit</button>
     </form>
 </body>
