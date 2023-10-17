@@ -1,56 +1,63 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Employer Registration</title>
 </head>
-<body>
-    <h1>Employer Registration Form</h1>
-    <form method="post">
-        {% csrf_token %}
-        <div>
-            <label for="{{ form.full_name.id_for_label }}">Full Name:</label>
-            {{ form.full_name }}
-        </div>
-        <div>
-            <label for="{{ form.company_name.id_for_label }}">Company Name:</label>
-            {{ form.company_name }}
-        </div>
-        <div>
-            <label for="{{ form.email.id_for_label }}">Email Address:</label>
-            {{ form.email }}
-        </div>
-        <div>
-            <label for="{{ form.contact_number.id_for_label }}">Contact Number:</label>
-            {{ form.contact_number }}
-        </div>
-        <div>
-            <label for="{{ form.company_location.id_for_label }}">Company Location/Address:</label>
-            {{ form.company_location }}
-        </div>
-        <div>
-            <label for="{{ form.industry.id_for_label }}">Industry/Sector:</label>
-            {{ form.industry }}
-        </div>
-        <div>
-            <label for="{{ form.username.id_for_label }}">Username:</label>
-            {{ form.username }}
-        </div>
-        <div>
-            <label for="{{ form.password.id_for_label }}">Password:</label>
-            {{ form.password }}
-        </div>
-        <div>
-            <label for="{{ form.company_description.id_for_label }}">Company Description or Summary:</label>
-        </div>
-        <div>
-            {{ form.company_description }}
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+<body class="p-3">
+    <div class="container">
+        <h1 class="mb-4">Employer Registration Form</h1>
+        <form method="post" class="mb-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.full_name.id_for_label }}">Full Name:</label>
+                {{ form.full_name }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.company_name.id_for_label }}">Company Name:</label>
+                {{ form.company_name }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email Address:</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.contact_number.id_for_label }}">Contact Number:</label>
+                {{ form.contact_number }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.company_location.id_for_label }}">Company Location/Address:</label>
+                {{ form.company_location }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.industry.id_for_label }}">Industry/Sector:</label>
+                {{ form.industry }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">Password:</label>
+                {{ form.password }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.company_description.id_for_label }}">Company Description or Summary:</label>
+            </div>
+            <div class="form-group">
+                {{ form.company_description }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
