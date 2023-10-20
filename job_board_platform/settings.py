@@ -33,8 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # My apps
-    'users',
     'job_board',
+    'users',
 
     # Third party apps
     'bootstrap4',

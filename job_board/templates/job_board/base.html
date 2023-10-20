@@ -1,6 +1,12 @@
 <p>
     <a href="{% url 'job_board:index' %}">Job Board</a> -
-    <a href="{% url 'job_board:jobs' %}">Jobs</a>
+    <a href="{% url 'job_board:jobs' %}">Jobs</a> -
+    {% if user.is_authenticated %}
+        Hello, {{  user.username }}.
+        <a href="{% url 'users:logout' %}">Log out</a>
+    {% else %}
+        <a href="{% url 'users:login' %}">Log in</a>
+    {% endif %}
 </p>
 
 {% block content %}{% endblock content %}
