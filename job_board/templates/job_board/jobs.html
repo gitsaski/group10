@@ -6,7 +6,9 @@
 
     <ul>
         {% for job in jobs %}
-            <li>{{ job }}</li>
+            <li>
+                <a href="{% url 'job_board:job' job.id %}">{{ job }}</a>
+            </li>
         {% empty %}
             <li>No jobs have been added yet.</li>
         {% endfor %}
