@@ -7,5 +7,7 @@ app_name = "job_board"
 
 urlpatterns = [
     # home page
-    path('', views.index, name="index")
+    path("", views.index, name="index"),
+    # page for the jobs
+    path("jobs/", views.jobs, name="jobs")
 ]

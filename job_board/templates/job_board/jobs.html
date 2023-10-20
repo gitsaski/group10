@@ -1,0 +1,15 @@
+{% extends "job_board/base.html" %}
+
+{% block content %}
+
+    <h1>Jobs</h1>
+
+    <ul>
+        {% for job in jobs %}
+            <li>{{ job }}</li>
+        {% empty %}
+            <li>No jobs have been added yet.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}
