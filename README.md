@@ -27,7 +27,7 @@ To view the project be sure that you have your virtual environment activated and
 
 "python manage.py runserver" and visit http://127.0.0.1:8000
 
-Job Board Platform Roadmap (5 Sprints):
+## Job Board Platform Roadmap (5 Sprints):
 
 Sprint 1: Project Setup and Planning (2 Weeks)
 
