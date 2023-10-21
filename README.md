@@ -1,5 +1,32 @@
 # Software Engineering Project
 
+## GETTING STARTED:
+
+Create a new directory for the project on your local machine to work in
+Switch to that directory in terminal and create virtual enironment with the following code e.g.:
+
+"python -m venv job_board_venv"
+
+Then to activate the virtual environment run the following code:
+
+"source job_board_venv/Scripts/activate"
+
+When the environment is active, you'll see the name of the environment in parentheses -> (job_board_venv) in your terminal
+
+To stop using a virtual env. enter: "deactivate" in your terminal
+
+To install all necessary packages for the project, type in your terminal:
+
+"pip install -r requirements.txt"
+
+To clone the remote repository to your local machine:
+
+"git clone https://github.com/gitsaski/group10.git"
+
+To view the project be sure that you have your virtual environment activated and type in your terminal:
+
+"python manage.py runserver" and visit http://127.0.0.1:8000
+
 Job Board Platform Roadmap (5 Sprints):
 
 Sprint 1: Project Setup and Planning (2 Weeks)
