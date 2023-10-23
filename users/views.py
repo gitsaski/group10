@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .forms import EmployerRegistrationForm
-from .models import Employer
+from .forms import EmployerRegistrationForm, EmployeeRegistrationForm
+from .models import Employer, Employee
 
 def employer_registration(request):
     if request.method == 'POST':
@@ -19,7 +19,28 @@ def employer_registration(request):
                 company_description=form.cleaned_data['company_description']
             )
             employer.save()
-            return render(request, 'registration_success.html')  # Replace 'registration_success.html' with your desired success page
+            return render(request, 'registration_success_employer.html') 
     else:
         form = EmployerRegistrationForm()
     return render(request, 'employer_registration.html', {'form': form})
+
+
+def employee_registration(request):
+    if request.method == 'POST':
+        form = EmployeeRegistrationForm(request.POST)
+        if form.is_valid():
+            # Create an instance of Employee and save it to the database
+            employee = Employee(
+                full_name=form.cleaned_data['full_name'],
+                email=form.cleaned_data['email'],
+                contact_number=form.cleaned_data['contact_number'],
+                address=form.cleaned_data['address'],
+                job_title=form.cleaned_data['job_title'],
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+            )
+            employee.save()
+            return render(request, 'registration_success_employee.html') 
+    else:
+        form = EmployeeRegistrationForm()
+    return render(request, 'employee_registration.html', {'form': form})

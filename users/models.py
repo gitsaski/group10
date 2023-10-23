@@ -13,3 +13,15 @@ class Employer(models.Model):
 
     def __str__(self):
         return self.company_name
+
+class Employee(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    contact_number = models.CharField(max_length=20)
+    address = models.CharField(max_length=100)
+    job_title = models.CharField(max_length=100)
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=128)  # Assuming password will be hashed before saving
+
+    def __str__(self):
+        return self.full_name

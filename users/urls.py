@@ -7,4 +7,6 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     # employer registration url
     path('employer-registration/', views.employer_registration, name='employer_registration'),
+     # Employee registration URL
+    path('employee-registration/', views.employee_registration, name='employee_registration'),
 ]
