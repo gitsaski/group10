@@ -19,3 +19,4 @@ class EmployeeRegistrationForm(forms.Form):
     job_title = forms.CharField(max_length=100, label='Job Title')
     username = forms.CharField(max_length=50, label='Username')
     password = forms.CharField(widget=forms.PasswordInput, label='Password')
+
