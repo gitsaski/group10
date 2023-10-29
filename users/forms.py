@@ -20,3 +20,15 @@ class EmployeeRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2", "full_name", "contact_number"]
+
+class CompanyRegistrationForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    company_name = forms.CharField(required=True)
+    contact_number = forms.CharField(required=True)
+    address = forms.CharField(required=True)
+
+    class Meta:
+        model = User
+        fields = ["username", "email", "password1", "password2", "company_name", "contact_number", "address"]
+
+
