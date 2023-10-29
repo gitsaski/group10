@@ -12,6 +12,9 @@ def registration_success_employee(request):
 def registration_success_employer(request):
     return render(request, 'users/registration_success_employer.html')
 
+def registration_success_company(request):
+    return render(request, 'users/registration_success_company.html')
+
 
 def employer_registration(request):
     if request.method == 'POST':
