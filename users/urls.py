@@ -22,5 +22,5 @@ urlpatterns = [
     path('registration_success_company/', views.registration_success_company, name='registration_success_company'),
     
     # profile url
-    path('profile/', views.profile, name='users-profile')
+    path('profile/', views.profile, name='profile')
 ]
