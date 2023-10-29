@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from .forms import EmployerRegistrationForm, EmployeeRegistrationForm
+from .forms import EmployerRegistrationForm, EmployeeRegistrationForm, CompanyRegistrationForm
 
 
 def registration(request):
@@ -37,3 +37,15 @@ def employee_registration(request):
         form = EmployeeRegistrationForm()
 
     return render(request, 'users/employee_registration.html', {'form': form})
+    
+def company_registration(request):
+    if request.method == 'POST':
+        form = CompanyRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('users:registration_success_company')
+    else:
+        form = CompanyRegistrationForm()
+
+    return render(request, 'users/company_registration.html', {'form': form})
