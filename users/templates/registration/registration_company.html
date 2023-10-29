@@ -1,0 +1,14 @@
+{% extends "job_board/base.html" %}
+
+{% block content %}
+
+<h2>Register as a company:</h2>
+<li>
+    <a href="http://127.0.0.1:8000/users/company-registration">Company</a>
+</li>
+<h2>Already have an account?</h2>
+<li>
+    <a href="{% url 'login' %}">Log in here</a>
+</li>
+
+{% endblock content %}
