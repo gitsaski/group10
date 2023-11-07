@@ -4,6 +4,11 @@
 
 <h1>{{ job.title }}</h1>
 
+<h2>Short Description:</h2>
+<p>{{ job.short_description|default:"No description provided." }}</p>
+
+<p><strong>Long Description:</strong>{{ job.long_description|default:"No description provided." }}</p>
+
 <p><strong>Employer:</strong> {{ job.employer }}</p>
 <p><strong>Location:</strong> {{ job.location }}</p>
 <p><strong>Job Type:</strong> {{ job.get_job_type_display }}</p>
@@ -17,9 +22,6 @@
 {% if job.application_deadline %}
     <p><strong>Application Deadline:</strong> {{ job.application_deadline|date:"F j, Y" }}</p>
 {% endif %}
-
-<h2>Description:</h2>
-<p>{{ job.description|default:"No description provided." }}</p>
 
 <h2>Qualifications:</h2>
 <p>{{ job.qualifications|default:"No qualifications provided." }}</p>

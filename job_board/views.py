@@ -2,8 +2,9 @@ from django.shortcuts import render
 from .models import Job
 
 def index(request):
+    jobs = Job.objects.all()[0:3]
     # the home page for the app
-    return render(request, "job_board/index.html")
+    return render(request, "job_board/index.html", {'jobs': jobs})
 
 def jobs(request):
     # show all jobs available
