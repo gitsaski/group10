@@ -1,9 +1,11 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class Job(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
-    employer = models.CharField(max_length=200)
+    short_description = models.TextField()
+    long_description = models.TextField(blank =True, null=True)
+    employer = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
     location = models.CharField(max_length=200)
     job_type = models.CharField(
         max_length=50,
