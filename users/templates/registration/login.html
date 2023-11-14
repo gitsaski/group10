@@ -2,17 +2,29 @@
 
 {% block content %}
 
+<div class="container mt-4">
     {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
+        <div class="alert alert-danger" role="alert">
+            Your username and password didn't match. Please try again.
+        </div>
     {% endif %}
 
     <form method="post" action="{% url 'users:login' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-    
-        <button name="submit">Log in</button>
-        <input type="hidden" name="next"
-            value="{% url 'job_board:index' %}" />
+        
+        <div class="mb-3">
+            <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+            {{ form.username }}
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+            {{ form.password }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Log in</button>
+        <input type="hidden" name="next" value="{% url 'job_board:index' %}" />
     </form>
+</div>
 
 {% endblock content %}

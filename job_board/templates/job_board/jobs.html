@@ -2,16 +2,22 @@
 
 {% block content %}
 
-    <h1>Jobs</h1>
+<div class="container mt-4">
+    <h2 class="text-center">Jobs</h2>
 
-    <ul>
-        {% for job in jobs %}
-            <li>
-                <a href="{% url 'job_board:job' job.id %}">{{ job }}</a>
-            </li>
-        {% empty %}
-            <li>No jobs have been added yet.</li>
-        {% endfor %}
-    </ul>
+    {% for job in jobs %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ job.title }}</h5>
+                <p class="card-text">{{ job.short_description|default:"No description provided." }}</p>
+                <a href="{% url 'job_board:job' job.id %}" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-info" role="alert">
+            No jobs have been added yet.
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock content %}

@@ -1,26 +1,30 @@
 {% extends "job_board/base.html" %}
 
 {% block content %}
-
-<h2 class="subtitle has-text-centered">Newest jobs</h2>
-
-<div class="columns">
-    {% for job in jobs %}
-        <div class="column is-4">
-            <div class="card">
-                <div class="card-content">
-                    <div class="media-content">
-                        <p class="title is-4">{{ job.title }}</p>
-                        <p class="subtitle is-6">{{ job.created_at }}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include Bootstrap CSS from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Newest jobs</h2>
+        <div class="row">
+            {% for job in jobs %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ job.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ job.created_at }}</h6>
+                            <p class="card-text">{{ job.short_description }}</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="content">
-                    {{ job.short_description }}
-                </div>
-            </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-</div>
+    </div>
+</body>
+</html>
 
 {% endblock content %}

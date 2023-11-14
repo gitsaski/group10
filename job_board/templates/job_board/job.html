@@ -2,28 +2,49 @@
 
 {% block content %}
 
-<h1>{{ job.title }}</h1>
+<div class="container mt-4">
+    <h1>{{ job.title }}</h1>
 
-<h2>Short Description:</h2>
-<p>{{ job.short_description|default:"No description provided." }}</p>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Short Description</h2>
+            <p class="card-text">{{ job.short_description|default:"No description provided." }}</p>
+        </div>
+    </div>
 
-<p><strong>Long Description:</strong>{{ job.long_description|default:"No description provided." }}</p>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h2 class="card-title">Long Description</h2>
+            <p class="card-text">{{ job.long_description|default:"No description provided." }}</p>
+        </div>
+    </div>
 
-<p><strong>Employer:</strong> {{ job.employer }}</p>
-<p><strong>Location:</strong> {{ job.location }}</p>
-<p><strong>Job Type:</strong> {{ job.get_job_type_display }}</p>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h2 class="card-title">Details</h2>
+            <p><strong>Employer:</strong> {{ job.employer }}</p>
+            <p><strong>Location:</strong> {{ job.location }}</p>
+            <p><strong>Job Type:</strong> {{ job.get_job_type_display }}</p>
 
-{% if job.salary %}
-    <p><strong>Salary:</strong> {{ job.salary }}€</p>
-{% endif %}
+            {% if job.salary %}
+                <p><strong>Salary:</strong> {{ job.salary }}€</p>
+            {% endif %}
 
-<p><strong>Posted On:</strong> {{ job.date_posted|date:"F j, Y" }}</p>
+            <p><strong>Posted On:</strong> {{ job.date_posted|date:"F j, Y" }}</p>
 
-{% if job.application_deadline %}
-    <p><strong>Application Deadline:</strong> {{ job.application_deadline|date:"F j, Y" }}</p>
-{% endif %}
+            {% if job.application_deadline %}
+                <p><strong>Application Deadline:</strong> {{ job.application_deadline|date:"F j, Y" }}</p>
+            {% endif %}
+        </div>
+    </div>
 
-<h2>Qualifications:</h2>
-<p>{{ job.qualifications|default:"No qualifications provided." }}</p>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h2 class="card-title">Qualifications</h2>
+            <p>{{ job.qualifications|default:"No qualifications provided." }}</p>
+        </div>
+    </div>
+
+</div>
 
 {% endblock content %}
