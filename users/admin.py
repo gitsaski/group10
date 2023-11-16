@@ -1,10 +1,15 @@
 from django.contrib import admin
 from .models import Company, Profile, Employer, Employee
 
+class EmployerInline(admin.TabularInline):
+    model = Employer
+    extra = 0
+
 class CompanyAdmin(admin.ModelAdmin):
     list_display = ('name', 'address', 'contact_number', 'created_at')
     search_fields = ('name', 'address', 'contact_number')
     list_filter = ('created_at',)
+    inlines = [EmployerInline]
 
 class EmployerAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'email', 'contact_number')
