@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import EmployerRegistrationForm, EmployeeRegistrationForm, CompanyRegistrationForm, CompanyUserRegistrationForm
-from .models import Company  # Import the Company model
+from .models import Employer, Company  # Import the Company model
 
 def registration(request):
     return render(request, 'registration/registration.html')
@@ -25,7 +25,13 @@ def employer_registration(request):
             user.save()
 
             company = form.cleaned_data['company']
-            Company.objects.create(user=user, company_name=company.company_name, contact_number=company.contact_number, address=company.address)
+            Employer.objects.create(
+                user=user,
+                full_name=form.cleaned_data['full_name'],
+                email=form.cleaned_data['email'],
+                contact_number=form.cleaned_data['contact_number'],
+                company=company,
+            )
 
             login(request, user)
             messages.success(request, 'Employer registration successful.')
@@ -58,6 +64,13 @@ def company_registration(request):
         form = CompanyRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            Company.objects.create(
+                user=user,
+                name=form.cleaned_data['company_name'],
+                contact_number=form.cleaned_data['contact_number'],
+                address=form.cleaned_data['address'],
+            )
+
             login(request, user)
             messages.success(request, 'Company registration successful.')
             return redirect('users:registration_success_company')
