@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import EmployerRegistrationForm, EmployeeRegistrationForm, CompanyRegistrationForm
-from .models import Employer, Employee, Company
+from .models import Employer, Employee, Company, Profile
 
 def registration(request):
     return render(request, 'registration/registration.html')
@@ -32,9 +32,10 @@ def employer_registration(request):
                 contact_number=form.cleaned_data['contact_number'],
                 company=company,
             )
-            
-            user.profile.employer = employer
-            user.profile.save()
+            # create or update the user's profile
+            profile, created = Profile.objects.get_or_create(user=user)
+            profile.employer = employer
+            profile.save()
 
             login(request, user)
             messages.success(request, 'Employer registration successful.')
@@ -57,8 +58,10 @@ def employee_registration(request):
                 email=form.cleaned_data['email'],
                 contact_number=form.cleaned_data['contact_number'],
             )
-            user.profile.employee = employee
-            user.profile.save()
+            # create or update the user's profile
+            profile, created = Profile.objects.get_or_create(user=user)
+            profile.employee = employee
+            profile.save()
 
             login(request, user)
             messages.success(request, 'Employee registration successful.')

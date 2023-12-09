@@ -21,6 +21,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)
 
 class Employer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
