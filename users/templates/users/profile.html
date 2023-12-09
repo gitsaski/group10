@@ -3,8 +3,42 @@
 {% block title %}Profile Page{% endblock title %}
 {% block content %}
     <div class="row my-3 p-3">
-        <h1>This is the profile page for {{user.username}}</h1>
-        <h1>{{user.email}}</h1>
-    </div>
+        <div class="col-md-9">
+            <h1>{{ user.username }}</h1>
+            <h4>{{ user.email }}</h4>
 
+            <hr>
+
+            <h4>Bio:</h4>
+            <div>
+                {% if user.profile.bio %}
+                    <p>{{ user.profile.bio }}</p>
+                {% else %}
+                    <p>No bio available.</p>
+                {% endif %}
+            </div>
+
+            <hr>
+
+            {% if user.employer %}
+                <h4>Employer Information:</h4>
+                <p>Name: {{ user.employer.full_name }}</p>
+                <p>Email: {{ user.employer.email }}</p>
+                <p>Contact Number: {{ user.employer.contact_number }}</p>
+                {% if user.employer.company %}
+                    <p>Company: {{ user.employer.company.name }}</p>
+                    <p>Company Address: {{ user.employer.company.address }}</p>
+                {% endif %}
+            {% elif user.employee %}
+                <h4>Employee Information:</h4>
+                <p>Name: {{ user.employee.full_name }}</p>
+                <p>Email: {{ user.employee.email }}</p>
+                <p>Contact Number: {{ user.employee.contact_number }}</p>
+            {% endif %}
+
+            <hr>
+
+            <a href="{% url 'users:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+        </div>
+    </div>
 {% endblock content %}

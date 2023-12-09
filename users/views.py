@@ -96,3 +96,7 @@ def company_registration(request):
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
+
+@login_required
+def edit_profile(request):
+    return render(request, 'users/edit_profile.html')
