@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import EmployerRegistrationForm, EmployeeRegistrationForm, CompanyRegistrationForm, CompanyUserRegistrationForm
-from .models import Employer, Company  # Import the Company model
+from .forms import EmployerRegistrationForm, EmployeeRegistrationForm, CompanyRegistrationForm
+from .models import Employer, Employee, Company
 
 def registration(request):
     return render(request, 'registration/registration.html')
@@ -25,13 +25,16 @@ def employer_registration(request):
             user.save()
 
             company = form.cleaned_data['company']
-            Employer.objects.create(
+            employer = Employer.objects.create(
                 user=user,
                 full_name=form.cleaned_data['full_name'],
                 email=form.cleaned_data['email'],
                 contact_number=form.cleaned_data['contact_number'],
                 company=company,
             )
+            
+            user.profile.employer = employer
+            user.profile.save()
 
             login(request, user)
             messages.success(request, 'Employer registration successful.')
@@ -46,6 +49,17 @@ def employee_registration(request):
         form = EmployeeRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
+
+            # create and associate the employee instance with the user's profile
+            employee = Employee.objects.create(
+                user=user,
+                full_name=form.cleaned_data['full_name'],
+                email=form.cleaned_data['email'],
+                contact_number=form.cleaned_data['contact_number'],
+            )
+            user.profile.employee = employee
+            user.profile.save()
+
             login(request, user)
             messages.success(request, 'Employee registration successful.')
             return redirect('users:registration_success_employee')

@@ -15,6 +15,10 @@ class Profile(models.Model):
     avatar = models.ImageField(default='default.jpg', upload_to='profile_images')
     bio = models.TextField()
 
+    # relationships with employee and employer
+    employee = models.OneToOneField('Employee', on_delete=models.CASCADE, null=True, blank=True)
+    employer = models.OneToOneField('Employer', on_delete=models.CASCADE, null=True, blank=True)
+
     def __str__(self):
         return self.user.username
 
