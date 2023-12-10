@@ -56,7 +56,7 @@ def employee_registration(request):
                 user=user,
                 full_name=form.cleaned_data['full_name'],
                 email=form.cleaned_data['email'],
-                contact_number=form.cleaned_data['contact_number'],
+                phone_number=form.cleaned_data['phone_number'],
             )
             # create or update the user's profile
             profile, created = Profile.objects.get_or_create(user=user)

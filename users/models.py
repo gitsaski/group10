@@ -39,7 +39,7 @@ class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
     full_name = models.CharField(max_length=100)
     email = models.EmailField()
-    contact_number = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=20)
 
     def __str__(self):
         return self.full_name

@@ -29,8 +29,8 @@ class EmployerAdmin(admin.ModelAdmin):
     search_fields = ('full_name', 'email', 'contact_number')
 
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'email', 'contact_number')
-    search_fields = ('full_name', 'email', 'contact_number')
+    list_display = ('full_name', 'email', 'phone_number')
+    search_fields = ('full_name', 'email', 'phone_number')
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)

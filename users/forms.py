@@ -16,11 +16,11 @@ class EmployerRegistrationForm(UserCreationForm):
 class EmployeeRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     full_name = forms.CharField(required=True)
-    contact_number = forms.CharField(required=True)
+    phone_number = forms.CharField(required=True)
 
     class Meta:
         model = User
-        fields = ["username", "email", "password1", "password2", "full_name", "contact_number"]
+        fields = ["username", "email", "password1", "password2", "full_name", "phone_number"]
 
 class CompanyRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
