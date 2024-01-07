@@ -22,3 +22,6 @@ def job_apply(request, job_id):
     # Your logic for handling job applications goes here
     job = Job.objects.get(pk=job_id)
     return render(request, 'job_board/job_apply.html', {'job': job})
+
+def submit_application_success(request):
+    return render(request, "job_board/submit_application_success.html")

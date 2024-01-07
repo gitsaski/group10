@@ -14,4 +14,6 @@ urlpatterns = [
     path("jobs/<int:job_id>/", views.job, name="job"),
     # page for applying a job
      path("jobs/<int:job_id>/apply/", views.job_apply, name="job_apply"),
+    # page for successful application submit
+    path("submit-application-success/", views.submit_application_success, name="submit_application_success")
 ]
