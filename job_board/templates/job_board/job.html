@@ -44,7 +44,16 @@
             <p>{{ job.qualifications|default:"No qualifications provided." }}</p>
         </div>
     </div>
-
+    {% if user.is_authenticated %}
+        <button class="btn btn-primary" id="applyButton">Apply Now</button>
+            </div>
+        </div>
+    {% else %}
+        <!-- Display a message prompting the user to log in or register -->
+        <div class="alert alert-info mt-3" role="alert">
+            Please <a href="/users/login/">log in</a> or <a href="/users/registration/">register</a> to apply for this job.
+        </div>
+    {% endif %}
 </div>
 
 {% endblock content %}
