@@ -21,4 +21,4 @@ def job(request, job_id):
 def job_apply(request, job_id):
     # Your logic for handling job applications goes here
     job = Job.objects.get(pk=job_id)
-    return render(request, 'job_board/job_apply.html', {'job_id': job})
+    return render(request, 'job_board/job_apply.html', {'job': job})
