@@ -45,7 +45,7 @@
         </div>
     </div>
     {% if user.is_authenticated %}
-        <button class="btn btn-primary" id="applyButton">Apply Now</button>
+    <a href="{% url 'job_board:job_apply' job.id %}" class="btn btn-primary" id="applyButton">Apply Now</a>
             </div>
         </div>
     {% else %}

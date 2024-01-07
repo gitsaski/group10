@@ -11,5 +11,7 @@ urlpatterns = [
     # page for the jobs
     path("jobs/", views.jobs, name="jobs"),
     # page for a single job
-    path("jobs/<int:job_id>/", views.job, name="job")
+    path("jobs/<int:job_id>/", views.job, name="job"),
+    # page for applying a job
+     path("jobs/<int:job_id>/apply/", views.job_apply, name="job_apply"),
 ]

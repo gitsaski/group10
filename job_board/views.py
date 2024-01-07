@@ -17,3 +17,8 @@ def job(request, job_id):
     job = Job.objects.get(id=job_id)
     context = {"job": job}
     return render(request, "job_board/job.html", context)
+
+def job_apply(request, job_id):
+    # Your logic for handling job applications goes here
+    job = Job.objects.get(pk=job_id)
+    return render(request, 'job_board/job_apply.html', {'job_id': job})
