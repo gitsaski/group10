@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Company, Employer, Employee
+from .models import Company, Employer, Employee, Profile
 
 class EmployerRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -40,3 +40,11 @@ class CompanyUserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ["username", "password1", "password2"]
+
+class UserProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio']
+        widgets = {
+            'bio': forms.Textarea(attrs={'rows': 5}),
+        }

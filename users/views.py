@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import EmployerRegistrationForm, EmployeeRegistrationForm, CompanyRegistrationForm
+from .forms import EmployerRegistrationForm, EmployeeRegistrationForm, CompanyRegistrationForm, UserProfileEditForm
 from .models import Employer, Employee, Company, Profile
 
 def registration(request):
@@ -102,4 +102,19 @@ def profile(request):
 
 @login_required
 def edit_profile(request):
-    return render(request, 'users/edit_profile.html')
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        # If the profile doesn't exist, create one
+        profile = Profile(user=request.user)
+        profile.save()
+
+    if request.method == 'POST':
+        form = UserProfileEditForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('users:profile')  # Redirect to the user profile page
+    else:
+        form = UserProfileEditForm(instance=profile)
+
+    return render(request, 'users/edit_profile.html', {'form': form})
